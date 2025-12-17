@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The inventory and budget management app built for interior designers who want to focus on creativity—not spreadsheets.">
+  <title>Ledger - More designing. Less spreadsheeting.</title>
+  <link rel="stylesheet" href="brand-theme.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+      background: #ffffff;
+      color: #1d1d1f;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-content {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 22px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #1d1d1f;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 400;
+      color: #1d1d1f;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-cta {
+      font-size: 14px;
+      font-weight: 500;
+      color: #ffffff !important;
+      background: #1d1d1f;
+      padding: 8px 16px;
+      border-radius: 14px;
+      opacity: 1 !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 60px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px 120px;
+      background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+    }
+
+    .hero-eyebrow {
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #9C8160;
+      margin-bottom: 20px;
+    }
+
+    .hero-headline {
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.05;
+      color: #1d1d1f;
+      margin-bottom: 20px;
+      max-width: 1400px;
+    }
+
+    .hero-subheadline {
+      font-size: clamp(21px, 2.5vw, 28px);
+      font-weight: 400;
+      line-height: 1.4;
+      color: #6e6e73;
+      margin-bottom: 30px;
+      max-width: 980px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      font-size: 17px;
+      font-weight: 400;
+      padding: 12px 24px;
+      border-radius: 980px;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #9C8160;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #8a7052;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #9C8160;
+      border: 1px solid #9C8160;
+    }
+
+    .btn-secondary:hover {
+      background: #9C8160;
+      color: #ffffff;
+    }
+
+    .hero-visual {
+      width: 100%;
+      max-width: 1200px;
+      height: 600px;
+      background: linear-gradient(145deg, #f5f5f7 0%, #e8e8ed 100%);
+      border-radius: 24px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    }
+
+    /* Section Base */
+    .section {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-wrapper {
+      width: 100%;
+      background: #ffffff;
+      padding: 120px 0;
+    }
+
+    .section-wrapper-alt {
+      background: #fafafa;
+    }
+
+    .section-large {
+      max-width: 1200px;
+    }
+
+    .section-headline {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #1d1d1f;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .section-subheadline {
+      font-size: clamp(21px, 2vw, 28px);
+      font-weight: 400;
+      line-height: 1.4;
+      color: #6e6e73;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Problem Section */
+    .problem-section {
+      background: #ffffff;
+      padding: 120px 20px;
+    }
+
+    .problem-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .problem-content h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .problem-content p {
+      font-size: 21px;
+      line-height: 1.5;
+      color: #6e6e73;
+      margin-bottom: 16px;
+    }
+
+    .problem-content .highlight {
+      font-size: 24px;
+      font-weight: 500;
+      color: #1d1d1f;
+      margin-top: 32px;
+    }
+
+    /* Feature Module */
+    .feature-module {
+      padding: 100px 40px;
+      display: grid;
+      gap: 60px;
+      align-items: center;
+      grid-template-columns: 1fr;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .feature-module-wrapper {
+      width: 100%;
+      background: #ffffff;
+    }
+
+    .feature-module-wrapper.section-alt {
+      background: #fafafa;
+    }
+
+    .feature-text {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .feature-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9C8160;
+      margin-bottom: 12px;
+    }
+
+    .feature-headline {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: #1d1d1f;
+    }
+
+    .feature-description {
+      font-size: 19px;
+      line-height: 1.5;
+      color: #6e6e73;
+      margin-bottom: 24px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .feature-list li {
+      font-size: 17px;
+      color: #1d1d1f;
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 8px;
+      height: 8px;
+      background: #9C8160;
+      border-radius: 50%;
+    }
+
+    .feature-media {
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(145deg, #f5f5f7 0%, #e8e8ed 100%);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-media::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+    }
+
+    /* Category Section */
+    .category-section {
+      padding: 120px 20px;
+      background: #fafafa;
+    }
+
+    .category-grid {
+      display: grid;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .category-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 48px 40px;
+      border: 1px solid #e8e8ed;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border-color: #9C8160;
+    }
+
+    .category-card h3 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      color: #1d1d1f;
+    }
+
+    .category-card p {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #6e6e73;
+    }
+
+    /* How It Works */
+    .steps-section {
+      background: #1d1d1f;
+      color: #ffffff;
+      padding: 120px 20px;
+    }
+
+    .steps-section .section-headline {
+      color: #ffffff;
+    }
+
+    .steps-section .section-subheadline {
+      color: #a1a1a6;
+      margin-bottom: 100px;
+    }
+
+    .steps-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 80px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #9C8160;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .step-content h3 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      font-size: 19px;
+      line-height: 1.5;
+      color: #a1a1a6;
+    }
+
+    /* Pricing */
+    .pricing-section {
+      padding: 120px 20px;
+      background: #fafafa;
+    }
+
+    .pricing-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .pricing-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .pricing-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: #9C8160;
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #9C8160;
+      background: rgba(156, 129, 96, 0.1);
+      padding: 6px 12px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    .pricing-card h3 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .pricing-price {
+      font-size: 56px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #1d1d1f;
+      margin: 24px 0;
+    }
+
+    .pricing-price span {
+      font-size: 19px;
+      font-weight: 400;
+      color: #6e6e73;
+    }
+
+    .pricing-description {
+      font-size: 17px;
+      color: #6e6e73;
+      margin-bottom: 32px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #e8e8ed;
+    }
+
+    .pricing-features li {
+      font-size: 15px;
+      color: #1d1d1f;
+      padding: 12px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #9C8160;
+      font-weight: 600;
+    }
+
+    /* FAQ */
+    .faq-section {
+      padding: 120px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e8e8ed;
+      padding: 32px 0;
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid #e8e8ed;
+    }
+
+    .faq-question {
+      font-size: 21px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1d1d1f;
+    }
+
+    .faq-answer {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #6e6e73;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      padding: 120px 20px;
+      text-align: center;
+      background: #1d1d1f;
+      color: #ffffff;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .final-cta p {
+      font-size: 21px;
+      color: #a1a1a6;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .final-cta .hero-cta-group {
+      margin-bottom: 0;
+    }
+
+    /* Footer */
+    .footer {
+      background: #fafafa;
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: #6e6e73;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: #1d1d1f;
+    }
+
+    .footer-legal {
+      font-size: 12px;
+      color: #86868b;
+      margin-top: 24px;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .feature-module {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+      }
+
+      .feature-text {
+        max-width: 100%;
+      }
+
+      .feature-module.reverse {
+        direction: rtl;
+      }
+
+      .feature-module.reverse > * {
+        direction: ltr;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 60px 20px 80px;
+      }
+
+      .section {
+        padding: 80px 20px;
+      }
+
+      .feature-module {
+        padding: 60px 20px;
+      }
+
+      .steps-section {
+        padding: 80px 20px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .pricing-container {
+        grid-template-columns: 1fr;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Smooth animations */
+    @media (prefers-reduced-motion: no-preference) {
+      .feature-module,
+      .category-card,
+      .pricing-card,
+      .step {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .feature-module:nth-child(1) { animation-delay: 0.1s; }
+      .feature-module:nth-child(2) { animation-delay: 0.2s; }
+      .feature-module:nth-child(3) { animation-delay: 0.3s; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="#" class="nav-logo">
+        <img src="ledger_logo.png" alt="Ledger" style="height: 32px; width: auto;">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#start" class="nav-cta">Try it free</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">For <strong>Interior Designers</strong> by <strong>Interior Designers</strong></div>
+    <h1 class="hero-headline">More designing.<br>Less spreadsheeting.</h1>
+    <p class="hero-subheadline">The inventory and budget management app built for interior designers who want to focus on creativity—not spreadsheets.</p>
+    <div class="hero-cta-group">
+      <a href="#start" class="btn btn-primary">Start your free trial</a>
+      <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+    </div>
+    <div class="hero-visual"></div>
+  </section>
+
+  <!-- Problem -->
+  <section class="problem-section">
+    <div class="problem-content">
+      <h2>You're an incredible designer.<br>But the business side is exhausting.</h2>
+      <p>Between juggling multiple projects, tracking dozens of purchases, managing budgets, and billing clients—the administrative burden can crush your creative flow.</p>
+      <p class="highlight">You deserve tools that match your talent.</p>
+    </div>
+  </section>
+
+  <!-- Solution section removed -->
+
+  <!-- PHASE 1: BUDGET SETUP & TRACKING -->
+  
+  <div class="section-wrapper section-wrapper-alt">
+    <section class="section">
+      <h2 class="section-headline">Budget Planning & Tracking</h2>
+      <p class="section-subheadline">Know what you can spend before you spend it—on every project, every time</p>
+    </section>
+  </div>
+
+  <!-- Feature: Multiple Projects Overview -->
+  <div class="feature-module-wrapper">
+    <section class="feature-module">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Project Management</div>
+        <h2 class="feature-headline">Never mix up your clients</h2>
+        <p class="feature-description">Your dashboard shows every client with their budget status right there. Switch between projects instantly. See who's on track, who's getting close, who needs attention—all in 10 seconds.</p>
+        <p class="feature-description"><strong>Stop the mental math across 5 different projects. Just look at your dashboard.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <!-- Feature: Custom Budget Categories -->
+  <div class="feature-module-wrapper section-alt">
+    <section class="feature-module reverse">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Budget Planning</div>
+        <h2 class="feature-headline">Stop paying for budget mistakes</h2>
+        <p class="feature-description">When you blow the budget, it comes out of YOUR design fee. Create categories for furniture, movers, storage, install crew—whatever you need. See exactly what's left in each bucket so you never overspend on sofas and have nothing left for the install team.</p>
+        <p class="feature-description"><strong>Set it up once at the start, then let it protect your income on every purchase.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <!-- Feature: Real-Time Budget Tracking -->
+  <div class="feature-module-wrapper">
+    <section class="feature-module">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Budget Tracking</div>
+        <h2 class="feature-headline">Shop without the stomach knots</h2>
+        <p class="feature-description">No more standing in a showroom wondering if you can afford that chair. Progress bars update automatically as you add purchases. Check your remaining budget in 3 seconds and buy with confidence.</p>
+        <p class="feature-description"><strong>Stop guessing. Every purchase backed by real numbers, not your best guess.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <!-- PHASE 2: SOURCING & SHOPPING -->
+
+  <div class="section-wrapper section-wrapper-alt">
+    <section class="section">
+      <h2 class="section-headline">Sourcing & Shopping</h2>
+      <p class="section-subheadline">Capture everything before you forget—so you don't lose money or lose your mind</p>
+    </section>
+  </div>
+
+  <!-- Feature: In-Line Transaction Capture -->
+  <div class="feature-module-wrapper">
+    <section class="feature-module reverse">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Transaction Tracking</div>
+        <h2 class="feature-headline">Never lose a receipt again</h2>
+        <p class="feature-description">Record purchases while standing in line—or later from your car. Add the amount, store, budget category, who paid, tax, etc. Snap photos of your cart and receipt right there. By the time you get home, you've forgotten half the details.</p>
+        <p class="feature-description"><strong>Track who paid for each purchase so you know who owes what—not 6 months later when you're doing mental math.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <!-- Feature: Item-Level Organization -->
+  <div class="feature-module-wrapper section-alt">
+    <section class="feature-module">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Item Organization</div>
+        <h2 class="feature-headline">Find things in 5 seconds</h2>
+        <p class="feature-description">Stop digging through emails and bags looking for receipts. Every item has its photo, price, receipt, room assignment, and SKU attached. Search by name, filter by room, filter by store, or just scroll and spot it visually.</p>
+        <p class="feature-description"><strong>Your brain is for design, not remembering which pillow came from which store three weeks ago.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <!-- PHASE 3: INSTALLATION -->
+
+  <div class="section-wrapper">
+    <section class="section">
+      <h2 class="section-headline">Installation</h2>
+      <p class="section-subheadline">Stay organized when the client is watching and everything is chaos</p>
+    </section>
+  </div>
+
+  <!-- Feature Modules -->
+  <div class="feature-module-wrapper section-alt">
+    <section class="feature-module reverse">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Return Tracking</div>
+        <h2 class="feature-headline">Stop losing money on returns</h2>
+        <p class="feature-description">Client hates the pillow? Tap it once to mark for return. When install is done and your trunk is full of rejects, you have a clean list of exactly what to return and where. No more forgetting $300 worth of stuff in your garage.</p>
+        <p class="feature-description"><strong>Filter to show only returns—complete with receipt photos and store info.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <div class="feature-module-wrapper">
+    <section class="feature-module">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Instant Lookup</div>
+        <h2 class="feature-headline">Look professional under pressure</h2>
+        <p class="feature-description">Client asking where you bought the lamp while you're trying to work? Pull it up in 5 seconds. Every item shows where you bought it, the receipt photo, and all the details. Need to check if you can return this chair? The receipt is on your phone, attached to that exact item.</p>
+        <p class="feature-description"><strong>Stop digging through emails and bags while the client waits. Look like a pro.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <div class="feature-module-wrapper section-alt">
+    <section class="feature-module reverse">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Room-Based Organization</div>
+        <h2 class="feature-headline">Keep everything moving</h2>
+        <p class="feature-description">Need to see just the living room items? Type "living room" and see only what goes there—no scrolling through 200 items. Search by store to find everything from West Elm. Or just scroll photos and spot items visually.</p>
+        <p class="feature-description"><strong>Multiple ways to find exactly what you need, right when you need it. No confusion, no delays.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <!-- PHASE 4: BUSINESS INVENTORY -->
+
+  <div class="section-wrapper">
+    <section class="section">
+      <h2 class="section-headline">Business Inventory</h2>
+      <p class="section-subheadline">Track items you're keeping for future projects</p>
+    </section>
+  </div>
+
+  <!-- Feature: Business Inventory Management -->
+  <div class="feature-module-wrapper section-alt">
+    <section class="feature-module">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Business Inventory</div>
+        <h2 class="feature-headline">Know exactly what you have in storage</h2>
+        <p class="feature-description">Found a great chair but it didn't work for this client? Can't return that lamp but know you'll use it later? Move items into your business inventory with storage location tags.</p>
+        <p class="feature-description"><strong>Turn "I know I have that somewhere" into "It's in Storage Area B, shelf 3."</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <!-- Feature: Tax & Accounting Documentation -->
+  <div class="feature-module-wrapper">
+    <section class="feature-module reverse">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Tax Documentation</div>
+        <h2 class="feature-headline">Stop dreading tax season</h2>
+        <p class="feature-description">When you sell from your own inventory or use markups, tax time can become a nightmare. Digging through receipts trying to remember what you paid versus what you charged? The app tracks it all—purchase price, sale price, margins, taxes paid. You'll have the numbers you need instead of reconstructing everything from memory.</p>
+        <p class="feature-description"><strong>No more shoebox of receipts and guesswork.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <!-- PHASE 5: BILLING & CLOSEOUT -->
+
+  <div class="section-wrapper">
+    <section class="section">
+      <h2 class="section-headline">Billing & Closeout</h2>
+      <p class="section-subheadline">Get paid fast and leave clients wanting to hire you again</p>
+    </section>
+  </div>
+
+  <!-- Feature: Automatic Reimbursement Invoicing -->
+  <div class="feature-module-wrapper section-alt">
+    <section class="feature-module reverse">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Client Invoicing</div>
+        <h2 class="feature-headline">Bill in 10 minutes, not 10 hours or 10 days</h2>
+        <p class="feature-description">The app already tracked every purchase and who paid for it. Create a clean invoice showing exactly who owes what—with all the details and total balance. Bill anytime during the project or all at once at the end. No spreadsheets, no memory games.</p>
+        <p class="feature-description"><strong>Stop spending your weekend trying to remember which credit card bought what. Click once, invoice ready.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <!-- Feature: Client Value Documentation -->
+  <div class="feature-module-wrapper">
+    <section class="feature-module">
+      <div class="feature-text">
+        <div class="feature-eyebrow">Project Documentation</div>
+        <h2 class="feature-headline">Turn clients into fans</h2>
+        <p class="feature-description">Show clients the value you delivered. Create a summary with every item showing the project price (what the client paid) and market value. Even if you use markups, prove your value with clear numbers—not just pretty rooms.</p>
+        <p class="feature-description"><strong>Build trust with real numbers. Get referrals with proof. Turn happy clients into repeat clients.</strong></p>
+      </div>
+      <div class="feature-media"></div>
+    </section>
+  </div>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="steps-section">
+    <h2 class="section-headline">How it works</h2>
+    <p class="section-subheadline">From project setup to final documentation</p>
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Set up your projects</h3>
+          <p>Create projects for each client with custom budget categories—furnishings, moving, storage, installation services. See all your projects and their budget status at a glance.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Capture while you shop</h3>
+          <p>Record transactions and items while standing in line—or add them later. Snap photos of your cart and receipts. Note who paid. Watch your budget update instantly.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Stay organized on-site</h3>
+          <p>Mark returns with one tap. Find any receipt instantly. Filter items by room. Keep everything running smoothly whether it's one day or one week.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Move extras to inventory</h3>
+          <p>Save items for future projects in your business inventory section. Tag with storage locations so you can actually find them later.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Bill and close with confidence</h3>
+          <p>Generate invoices that show exactly who owes what. Create value summaries showing your client's savings. Get paid while building trust for future projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="pricing-section">
+    <h2 class="section-headline">Simple, transparent pricing</h2>
+    <p class="section-subheadline">Choose the plan that fits your business</p>
+    <div class="pricing-container">
+      <div class="pricing-card">
+        <span class="pricing-badge">Try it free</span>
+        <h3>Free Trial</h3>
+        <div class="pricing-price">$0</div>
+        <p class="pricing-description">14 days • No commitment</p>
+        <ul class="pricing-features">
+          <li>Try every feature</li>
+          <li>Use with real projects</li>
+          <li>See how much time you save</li>
+          <li>No commitment required</li>
+        </ul>
+        <a href="#start" class="btn btn-primary" style="width: 100%;">Start free trial</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Pro</h3>
+        <div class="pricing-price">$29<span>/month</span></div>
+        <p class="pricing-description">Complete inventory and budget management for your projects</p>
+        <ul class="pricing-features">
+          <li>Unlimited projects</li>
+          <li>Custom budget categories</li>
+          <li>Real-time budget tracking</li>
+          <li>Transaction & receipt capture</li>
+          <li>Business inventory management</li>
+          <li>Professional invoicing</li>
+          <li>Client value summaries</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#start" class="btn btn-secondary" style="width: 100%;">Get started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq-section">
+    <h2 class="section-headline">Frequently asked questions</h2>
+    
+    <div class="faq-item">
+      <h3 class="faq-question">Does this work for both residential and commercial projects?</h3>
+      <p class="faq-answer">Absolutely. Whether you're designing a single room or a 20,000 sq ft office, our platform scales to your project complexity.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-question">Can I track multiple projects at once?</h3>
+      <p class="faq-answer">Yes. Manage unlimited projects simultaneously. Your projects dashboard shows budget status for each client at a glance, and you can switch between projects instantly without losing your place.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="faq-question">What if I'm not tech-savvy?</h3>
+      <p class="faq-answer">Our interface is designed for creatives, not accountants. If you can use Instagram, you can use this.</p>
+    </div>
+    
+    <div class="faq-item">
+      <h3 class="faq-question">Is there a limit on the number of budget categories I can add?</h3>
+      <p class="faq-answer">No — there’s no limit. Create as many categories as you need to match your workflow and projects.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-question">What's the difference between the invoice and client summary?</h3>
+      <p class="faq-answer">The invoice reconciles who owes whom and helps you get reimbursed. The client summary shows purchase price vs. market value to demonstrate the savings you delivered—great for building relationships and getting referrals.</p>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section id="start" class="final-cta">
+    <h2>Ready to design with less stress?</h2>
+    <p>Stop drowning in spreadsheets and lost receipts. Take control of your projects and get back to what you do best.</p>
+    <div class="hero-cta-group">
+      <a href="#" class="btn btn-primary">Start your free trial</a>
+      <a href="#" class="btn btn-secondary" style="background: transparent; border-color: #ffffff; color: #ffffff;">Schedule a demo</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-legal">© 2025 Ledger. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
