@@ -304,6 +304,49 @@
       color: #9C8160;
     }
 
+    /* Our Story Section */
+    .our-story-section {
+      background: #fafafa;
+      padding: 120px 20px;
+    }
+
+    .story-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .story-text {
+      font-size: 19px;
+      line-height: 1.6;
+      color: #6e6e73;
+      margin-top: 32px;
+    }
+
+    .story-text p {
+      margin-bottom: 24px;
+    }
+
+    .story-text em {
+      font-style: italic;
+      color: #1d1d1f;
+      font-weight: 500;
+    }
+
+    .story-link {
+      display: inline-block;
+      color: #9C8160;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 17px;
+      margin-top: 8px;
+      transition: color 0.3s;
+    }
+
+    .story-link:hover {
+      color: #8a7052;
+    }
+
     /* Feature Module */
     .feature-module {
       padding: 100px 40px;
@@ -564,15 +607,23 @@
     /* Savings pill — highlighted for annual discount */
     .savings-pill {
       display: inline-block;
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 15px;
+      font-weight: 800;
       text-transform: none;
       letter-spacing: -0.01em;
-      color: #ffffff;
-      background: #9C8160;
-      padding: 8px 14px;
+      color: #9C8160; /* brown text */
+      background: #F4E8DC; /* light brown background */
+      border: 1px solid #9C8160; /* regular brown border */
+      padding: 10px 16px;
       border-radius: 999px;
-      margin-bottom: 16px;
+      margin-bottom: 8px; /* minimal space below pill */
+    }
+
+    /* Larger pill styling specifically for the featured (quarterly) card */
+    .pricing-card.featured .savings-pill {
+      font-size: 16px;
+      padding: 12px 20px;
+      font-weight: 800;
     }
 
     .original-price {
@@ -616,6 +667,31 @@
       font-size: 17px;
       color: #6e6e73;
       margin-bottom: 32px;
+    }
+    
+    .pricing-note {
+      font-size: 14px;
+      color: #9a9a9f;
+      margin-top: 2px;
+      margin-bottom: 2px; /* tightened spacing to footnote */
+    }
+    .pricing-footnote {
+      font-size: 13px;
+      color: #9a9a9f;
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+    /* Remove extra gap created by the description paragraph in the featured card */
+    .pricing-card.featured .pricing-description {
+      margin-bottom: 4px;
+    }
+    /* Match spacing between the featured card's bullets and the text above
+       to the Monthly card: ensure the features list sits 32px below the promo area */
+    .pricing-card.featured .pricing-footnote {
+      margin-bottom: 0;
+    }
+    .pricing-card.featured .pricing-features {
+      margin-top: 32px;
     }
 
     .pricing-features {
@@ -866,6 +942,7 @@
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="#our-story">Our Story</a></li>
         <li><a href="#pricing" class="nav-cta">Get Started</a></li>
       </ul>
     </div>
@@ -1177,7 +1254,7 @@
       <!-- Monthly (left) -->
       <div class="pricing-card">
         <h3>Monthly</h3>
-        <div class="pricing-price">$29<span>/month</span></div>
+        <div class="pricing-price">$58<span>/month</span></div>
         <p class="pricing-description">No commitment. Cancel anytime.</p>
         <ul class="pricing-features">
           <li>Unlimited projects</li>
@@ -1192,24 +1269,20 @@
         <a href="#start" class="btn btn-secondary" style="width: 100%;">Get Started</a>
       </div>
 
-      <!-- Annual (right) -->
+      <!-- Quarterly (buy 3, get 9 months free) -->
       <div class="pricing-card featured">
-        <h3>Annual <span aria-hidden="true" title="Most popular" style="display:inline-block; vertical-align:middle; margin-left:6px;">
+        <h3>Quarterly <span aria-hidden="true" title="Most popular" style="display:inline-block; vertical-align:middle; margin-left:6px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block; vertical-align:middle; width:18px; height:18px;">
               <path d="M12 .587l3.09 6.26 6.91.99-5 4.87 1.18 6.88L12 17.77l-6.18 3.84L7 13.7 2 8.83l6.91-.99L12 .587z" fill="#FFD700"/>
             </svg>
           </span></h3>
-        <div class="pricing-price">$174<span>/year</span></div>
-        <p class="pricing-description"><span class="savings-pill">Get 6 Months Free</span></p>
+        <div class="pricing-price">$174<span>/3 months</span></div>
+        <p class="pricing-description"><span class="savings-pill">9 Months Free!</span></p>
+        <p class="pricing-note">Get 9 months Free when you buy 3 months!<sup>*</sup></p>
+        <p class="pricing-footnote"><sup>*</sup> Limited-time Founders Group discount.</p>
         <ul class="pricing-features">
-          <li>Unlimited projects</li>
-          <li>Custom budget categories</li>
-          <li>Real-time budget tracking</li>
-          <li>Transaction & receipt capture</li>
-          <li>Business inventory management</li>
-          <li>Professional invoicing</li>
-          <li>Client value summaries</li>
-          <li>Email support</li>
+          <li><strong>All Monthly features</strong></li>
+          <li>Plus $522 Free service</li>
         </ul>
         <a href="#start" class="btn btn-primary" style="width: 100%;">Get Started</a>
       </div>
@@ -1248,6 +1321,44 @@
       <p class="faq-answer">Yes. Ledger is built mobile-first so you can do everything from your phone — capture purchases, add receipts, manage budgets, and send invoices. The interface is optimized for quick, touch-friendly workflows so you can run projects on-the-go without missing a beat.</p>
     </div>
   </section>
+
+  <!-- Our Story -->
+  <div class="feature-module-wrapper">
+    <section id="our-story" class="feature-module" style="background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/DSC06177-HDR copy 5-1920.webp'); background-size: cover; background-position: center; filter: grayscale(0.4); max-width: none; margin: 0; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding: 120px 80px; grid-template-columns: 3fr 2fr;">
+      <style>
+        @media (max-width: 767px) {
+          #our-story {
+            padding: 80px 20px !important;
+            width: 100% !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            grid-template-columns: 1fr !important;
+          }
+          #our-story .feature-text {
+            padding: 0 !important;
+          }
+        }
+      </style>
+      <div class="feature-text" style="color: #ffffff; padding: 0 40px;">
+        <div class="feature-eyebrow" style="color: #C4A484;">About Us</div>
+        <h2 class="feature-headline" style="color: #ffffff;">Our Story</h2>
+        <p class="feature-description" style="color: rgba(255, 255, 255, 0.9);">Born from the chaos of running a design business, Ledger was created to solve our own bottlenecks at 1584 Design.</p>
+        <div class="story-text" style="color: rgba(255, 255, 255, 0.9);">
+          <p>1584 Design began in 2021 with a simple mission: to create extraordinary spaces for exclusive clients through full-service interior design.</p>
+
+          <p>But like many designers, we struggled with the business side. Between managing multiple projects, tracking hundreds of purchases, staying within budgets, and ensuring clients got billed correctly, we found ourselves spending more time in spreadsheets than showrooms.</p>
+
+          <p>So we built Ledger. What started as a solution to our own bottleneck has become the tool we wish we'd had from day one. Now we're sharing it with fellow designers who deserve to focus on creativity, not paperwork.</p>
+
+          <p><em style="color: #ffffff;">Because every designer should have the freedom to do what they do best: create spaces that inspire.</em></p>
+
+          <p><a href="https://1584design.com" target="_blank" rel="noopener noreferrer" class="story-link" style="color: #C4A484;">Visit 1584 Design →</a></p>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- Final CTA -->
   <section id="start" class="final-cta">
