@@ -1634,26 +1634,56 @@
 
     // Preload both order form URLs on page load
     document.addEventListener('DOMContentLoaded', function() {
-      // Preload after a short delay to not interfere with initial page load
+      // Immediate preload for better mobile performance (shorter delay)
       setTimeout(function() {
         preloadIframe('https://orderledger.nine4.co/monthly');
         preloadIframe('https://orderledger.nine4.co/quarterly');
-      }, 2000);
+      }, 1000);
 
       // Also preload when user first interacts with pricing section
       const pricingSection = document.getElementById('pricing');
       if (pricingSection) {
-        const observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              preloadIframe('https://orderledger.nine4.co/monthly');
-              preloadIframe('https://orderledger.nine4.co/quarterly');
-              observer.disconnect();
-            }
+        // Check if pricing section is already visible (important for mobile)
+        const rect = pricingSection.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isVisible) {
+          // If already visible, preload immediately
+          preloadIframe('https://orderledger.nine4.co/monthly');
+          preloadIframe('https://orderledger.nine4.co/quarterly');
+        } else {
+          // Set up intersection observer for when it comes into view
+          const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                preloadIframe('https://orderledger.nine4.co/monthly');
+                preloadIframe('https://orderledger.nine4.co/quarterly');
+                observer.disconnect();
+              }
+            });
+          }, {
+            threshold: 0.1 // Trigger when 10% of the section is visible
           });
-        });
-        observer.observe(pricingSection);
+          observer.observe(pricingSection);
+        }
       }
+
+      // Additional trigger: preload on first user interaction (touch/click)
+      let hasInteracted = false;
+      function handleFirstInteraction() {
+        if (!hasInteracted) {
+          hasInteracted = true;
+          preloadIframe('https://orderledger.nine4.co/monthly');
+          preloadIframe('https://orderledger.nine4.co/quarterly');
+          // Remove listeners after first interaction
+          document.removeEventListener('touchstart', handleFirstInteraction);
+          document.removeEventListener('click', handleFirstInteraction);
+        }
+      }
+
+      // Listen for first touch or click (covers mobile and desktop)
+      document.addEventListener('touchstart', handleFirstInteraction, { once: true, passive: true });
+      document.addEventListener('click', handleFirstInteraction, { once: true, passive: true });
     });
 
     // Modal functionality
