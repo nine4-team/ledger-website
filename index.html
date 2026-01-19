@@ -33,10 +33,10 @@
       top: 0;
       left: 0;
       right: 0;
-      background: rgba(255, 255, 255, 0.8);
+      background: #191919;
       backdrop-filter: saturate(180%) blur(20px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .nav-content {
@@ -61,15 +61,29 @@
 
     .nav-logo img {
       display: block;
+      height: 44px;
+      width: auto;
+      border-radius: 10px;
     }
     
-    /* Hero logo size (adjustable) */
+    /* Hero logo tile */
+    .hero-logo-frame {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-radius: 30px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+      margin-bottom: 24px;
+    }
+
     .hero-logo {
-      /* increased to 1.5x the previous size per request */
-      width: clamp(105px, 13.5vw, 285px);
+      width: clamp(70px, 9vw, 180px);
       height: auto;
+      border-radius: 20px;
       display: block;
-      margin: 0 auto 24px;
     }
 
     /* Inline brand label to appear before the eyebrow text */
@@ -92,7 +106,7 @@
     .nav-links a {
       font-size: 15px;
       font-weight: 400;
-      color: #1d1d1f;
+      color: #ffffff;
       text-decoration: none;
       opacity: 0.8;
       transition: opacity 0.3s;
@@ -105,8 +119,8 @@
     .nav-cta {
       font-size: 14px;
       font-weight: 500;
-      color: #ffffff !important;
-      background: #1d1d1f;
+      color: #191919 !important;
+      background: #ffffff;
       padding: 8px 16px;
       border-radius: 14px;
       opacity: 1 !important;
@@ -129,7 +143,7 @@
       display: block;
       width: 100%;
       height: 2px;
-      background: #1d1d1f;
+      background: #ffffff;
       border-radius: 1px;
       transition: all 0.3s ease;
     }
@@ -140,7 +154,7 @@
       left: 0;
       width: 100%;
       height: calc(100vh - 60px);
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(25, 25, 25, 0.95);
       backdrop-filter: saturate(180%) blur(20px);
       transform: translateX(-100%);
       transition: transform 0.3s ease;
@@ -167,7 +181,7 @@
     .mobile-nav-links a {
       font-size: 15px;
       font-weight: 400;
-      color: #1d1d1f;
+      color: #ffffff;
       text-decoration: none;
       opacity: 0.8;
       transition: opacity 0.3s;
@@ -700,6 +714,27 @@
       border-radius: 12px;
       margin-bottom: 24px;
     }
+
+    .pricing-card-wrapper {
+      position: relative;
+    }
+
+    .founders-banner {
+      position: absolute;
+      top: -16px;
+      left: 0;
+      right: 0;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      background: #9C8160;
+      padding: 12px 16px;
+      text-align: center;
+      border-radius: 24px 24px 0 0;
+      z-index: 10;
+    }
     
     /* Savings pill — highlighted for annual discount */
     .savings-pill {
@@ -1143,7 +1178,7 @@
   <nav class="nav">
     <div class="nav-content">
       <a href="#" class="nav-logo">
-        <img src="ledger_logo.png" alt="Ledger" style="height: 32px; width: auto;">
+        <img src="ledger_logo.png" alt="Ledger">
       </a>
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
@@ -1173,8 +1208,10 @@
 
   <!-- Hero -->
   <section class="hero">
-    <img src="ledger_logo.png" alt="Ledger logo" class="hero-logo">
-    <div class="hero-eyebrow"><span class="hero-brand-inline">Ledger.</span><br> For <strong>Interior Designers</strong> by <strong>Interior Designers</strong></div>
+    <span class="hero-logo-frame">
+      <img src="ledger_logo.png" alt="Ledger logo" class="hero-logo">
+    </span>
+    <div class="hero-eyebrow"><br><span class="hero-brand-inline">Ledger.</span> For <strong>Interior Designers</strong> by <strong>Interior Designers</strong></div>
     <h1 class="hero-headline">More designing.<br>Less admin.</h1>
     <p class="hero-subheadline">The inventory and budget management app built for interior designers who want to focus on creativity—not spreadsheets.</p>
     <div class="hero-cta-group">
@@ -1493,21 +1530,23 @@
       </div>
 
       <!-- Quarterly (buy 3, get 9 months free) -->
-      <div class="pricing-card featured">
-        <h3>Quarterly <span aria-hidden="true" title="Most popular" style="display:inline-block; vertical-align:middle; margin-left:6px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block; vertical-align:middle; width:18px; height:18px;">
-              <path d="M12 .587l3.09 6.26 6.91.99-5 4.87 1.18 6.88L12 17.77l-6.18 3.84L7 13.7 2 8.83l6.91-.99L12 .587z" fill="#FFD700"/>
-            </svg>
-          </span></h3>
+      <div class="pricing-card-wrapper">
+        <div class="founders-banner">Limited-Time <strong>Founder's Discount</strong></div>
+        <div class="pricing-card featured">
+          <h3>Quarterly <span aria-hidden="true" title="Most popular" style="display:inline-block; vertical-align:middle; margin-left:6px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block; vertical-align:middle; width:18px; height:18px;">
+                <path d="M12 .587l3.09 6.26 6.91.99-5 4.87 1.18 6.88L12 17.77l-6.18 3.84L7 13.7 2 8.83l6.91-.99L12 .587z" fill="#FFD700"/>
+              </svg>
+            </span></h3>
         <div class="pricing-price">$174<span>/3 months</span></div>
         <p class="pricing-description"><span class="savings-pill">Sign Up Now To Get 9 Months Free!</span></p>
-        <p class="pricing-note">Get your first year for the price of one quarter when you sign up now. $174 for your first year, then $174 every 3 months after.<sup>*</sup></p>
-        <p class="pricing-footnote"><sup>*</sup> Limited-time Founders Group discount.</p>
+        <p class="pricing-note">Get your first year for the price of one quarter when you sign up now. $174 for your first year, then $174 every 3 months after.</p>
         <ul class="pricing-features">
           <li><strong>All Monthly features</strong></li>
-          <li>Plus $522 Free service</li>
+          <li>Plus $522 in free service!</li>
         </ul>
-        <a href="javascript:void(0)" onclick="openModal('https://orderledger.nine4.co/quarterly')" class="btn btn-primary" style="width: 100%;">Get Started</a>
+          <a href="javascript:void(0)" onclick="openModal('https://orderledger.nine4.co/quarterly')" class="btn btn-primary" style="width: 100%;">Get Started</a>
+        </div>
       </div>
     </div>
   </section>
