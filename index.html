@@ -86,14 +86,17 @@
       display: block;
     }
 
-    /* Inline brand label to appear before the eyebrow text */
+    /* Brand label on its own line above the eyebrow text */
     .hero-brand-inline {
-      font-size: 18px;
-      font-weight: 800;
-      color: #1d1d1f;
-      margin-right: 8px;
-      letter-spacing: -0.01em;
-      display: inline-block;
+      font-size: 2.25rem; /* text-4xl = 36px */
+      font-weight: 800; /* font-extrabold */
+      color: #8a7052; /* text-primary-600 */
+      text-align: center;
+      line-height: 2.5rem; /* 40px, from text-4xl definition */
+      letter-spacing: normal; /* not set, so default */
+      font-family: Avenir, Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin-bottom: 8px;
+      display: block;
     }
 
     .nav-links {
@@ -237,11 +240,17 @@
     }
 
     .hero-eyebrow {
-      font-size: 17px;
-      font-weight: 500;
+      font-size: clamp(0.9375rem, 2.5vw, 1.25rem); /* 15px min, scales, 20px max */
+      font-weight: 400; /* normal for regular text */
+      color: #4b5563; /* text-gray-600 */
+      text-align: center;
+      line-height: 1.5; /* default, not explicitly set */
       letter-spacing: 0.02em;
-      color: #9C8160;
       margin-bottom: 20px;
+    }
+
+    .hero-eyebrow strong {
+      font-weight: 600; /* font-semibold for "Interior Designers" text */
     }
 
     .hero-headline {
@@ -1211,7 +1220,8 @@
     <span class="hero-logo-frame">
       <img src="ledger_logo.png" alt="Ledger logo" class="hero-logo">
     </span>
-    <div class="hero-eyebrow"><br><span class="hero-brand-inline">Ledger.</span> For <strong>Interior Designers</strong> by <strong>Interior Designers</strong></div>
+    <!-- <div class="hero-brand-inline">Ledger.</div> -->
+    <div class="hero-eyebrow">For <strong>Interior Designers</strong> by <strong>Interior Designers</strong></div>
     <h1 class="hero-headline">More designing.<br>Less admin.</h1>
     <p class="hero-subheadline">The inventory and budget management app built for interior designers who want to focus on creativity—not spreadsheets.</p>
     <div class="hero-cta-group">
