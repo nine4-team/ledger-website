@@ -1195,6 +1195,7 @@
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#our-story">Our Story</a></li>
+        <li><a href="docs/">Docs</a></li>
         <li><a href="#pricing" class="nav-cta">Get Started</a></li>
       </ul>
       <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
@@ -1210,6 +1211,7 @@
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#our-story">Our Story</a></li>
+        <li><a href="docs/">Docs</a></li>
         <li><a href="#pricing" class="nav-cta">Get Started</a></li>
       </ul>
     </div>
@@ -1661,7 +1663,7 @@
           </svg>
         </div>
       </div>
-      <iframe id="orderIframe" class="modal-iframe" src="" title="Order Form"></iframe>
+      <iframe id="orderIframe" class="modal-iframe" src="about:blank" title="Order Form"></iframe>
     </div>
   </div>
 
@@ -1778,6 +1780,7 @@
         const placeholderIframe = document.createElement('iframe');
         placeholderIframe.id = 'orderIframe';
         placeholderIframe.className = 'modal-iframe';
+        placeholderIframe.src = 'about:blank';
         placeholderIframe.title = 'Order Form';
         modal.querySelector('.modal-content').appendChild(placeholderIframe);
       }
