@@ -3,98 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ledger employee help docs for common workflows, concepts, admin tasks, and reference information.">
-  <title>Move Inventory Items To A Project - Ledger Docs</title>
+  <meta name="description" content="Ledger employee docs: Move Inventory Items to a Project.">
+  <title>Move Inventory Items to a Project - Ledger Docs</title>
   <link rel="stylesheet" href="../docs.css">
   <link rel="icon" type="image/png" sizes="32x32" href="../../ledger_logo.png">
 </head>
-<body>
+<body data-root="../">
   <header class="docs-topbar">
     <div class="docs-topbar-inner">
       <a class="docs-brand" href="../../index.html"><img src="../../ledger_logo.png" alt="Ledger"><span>Ledger Docs</span></a>
-      <nav class="docs-toplinks" aria-label="Top navigation">
-        <a href="../index.html">Docs Home</a>
-        <a href="../../index.html">Website</a>
-      </nav>
+      <div class="docs-topbar-right">
+        <nav class="docs-toplinks" aria-label="Top navigation">
+          <a href="../index.html">Docs Home</a>
+          <a href="../../index.html">Website</a>
+        </nav>
+        <button class="docs-menu-toggle" type="button" aria-expanded="false" aria-controls="docs-sidebar">Menu</button>
+      </div>
     </div>
   </header>
   <div class="docs-shell">
-    <aside class="docs-sidebar" aria-label="Docs navigation">
+    <aside id="docs-sidebar" class="docs-sidebar" aria-label="Docs navigation">
       <input class="docs-search" type="search" placeholder="Search docs" aria-label="Search docs">
-      
       <section class="docs-nav-section">
         <h2 class="docs-nav-section-title">Getting Started</h2>
         <ul class="docs-nav-list">
-          <li><a class="docs-nav-link" href="../getting-started/first-day-quick-start.html" data-doc-link data-title="first-day quick start">First-Day Quick Start</a></li>
-          <li><a class="docs-nav-link" href="../getting-started/navigation-overview.html" data-doc-link data-title="navigation overview">Navigation Overview</a></li>
-          <li><a class="docs-nav-link" href="../getting-started/roles-and-permissions.html" data-doc-link data-title="roles and permissions">Roles and Permissions</a></li>
-          <li><a class="docs-nav-link" href="../getting-started/what-ledger-is.html" data-doc-link data-title="what ledger is">What Ledger Is</a></li>
+          <li><a class="docs-nav-link" href="../getting-started/what-ledger-is.html" data-doc-link data-href="getting-started/what-ledger-is.html">What Ledger Is</a></li>
+          <li><a class="docs-nav-link" href="../getting-started/first-day-quick-start.html" data-doc-link data-href="getting-started/first-day-quick-start.html">First-Day Quick Start</a></li>
+          <li><a class="docs-nav-link" href="../getting-started/navigation-overview.html" data-doc-link data-href="getting-started/navigation-overview.html">Navigation Overview</a></li>
+          <li><a class="docs-nav-link" href="../getting-started/roles-and-permissions.html" data-doc-link data-href="getting-started/roles-and-permissions.html">Roles and Permissions</a></li>
         </ul>
       </section>
-
       <section class="docs-nav-section">
         <h2 class="docs-nav-section-title">Core Concepts</h2>
         <ul class="docs-nav-list">
-          <li><a class="docs-nav-link" href="../core-concepts/billing-and-invoices.html" data-doc-link data-title="billing and invoices">Billing And Invoices</a></li>
-          <li><a class="docs-nav-link" href="../core-concepts/budgets.html" data-doc-link data-title="budgets">Budgets</a></li>
-          <li><a class="docs-nav-link" href="../core-concepts/inventory.html" data-doc-link data-title="inventory">Inventory</a></li>
-          <li><a class="docs-nav-link" href="../core-concepts/items-and-item-quick-drafts.html" data-doc-link data-title="items and item quick drafts">Items And Item Quick Drafts</a></li>
-          <li><a class="docs-nav-link" href="../core-concepts/projects.html" data-doc-link data-title="projects">Projects</a></li>
-          <li><a class="docs-nav-link" href="../core-concepts/review-queue.html" data-doc-link data-title="review queue">Review Queue</a></li>
-          <li><a class="docs-nav-link" href="../core-concepts/search.html" data-doc-link data-title="search">Search</a></li>
-          <li><a class="docs-nav-link" href="../core-concepts/spaces.html" data-doc-link data-title="spaces">Spaces</a></li>
-          <li><a class="docs-nav-link" href="../core-concepts/transactions.html" data-doc-link data-title="transactions">Transactions</a></li>
+          <li><a class="docs-nav-link" href="../core-concepts/projects.html" data-doc-link data-href="core-concepts/projects.html">Projects</a></li>
+          <li><a class="docs-nav-link" href="../core-concepts/items-and-item-quick-drafts.html" data-doc-link data-href="core-concepts/items-and-item-quick-drafts.html">Items and Item Quick Drafts</a></li>
+          <li><a class="docs-nav-link" href="../core-concepts/transactions.html" data-doc-link data-href="core-concepts/transactions.html">Transactions</a></li>
+          <li><a class="docs-nav-link" href="../core-concepts/spaces.html" data-doc-link data-href="core-concepts/spaces.html">Spaces</a></li>
+          <li><a class="docs-nav-link" href="../core-concepts/inventory.html" data-doc-link data-href="core-concepts/inventory.html">Inventory</a></li>
+          <li><a class="docs-nav-link" href="../core-concepts/budgets.html" data-doc-link data-href="core-concepts/budgets.html">Budgets</a></li>
+          <li><a class="docs-nav-link" href="../core-concepts/billing-and-invoices.html" data-doc-link data-href="core-concepts/billing-and-invoices.html">Billing and Invoices</a></li>
+          <li><a class="docs-nav-link" href="../core-concepts/review-queue.html" data-doc-link data-href="core-concepts/review-queue.html">Review Queue</a></li>
+          <li><a class="docs-nav-link" href="../core-concepts/search.html" data-doc-link data-href="core-concepts/search.html">Search</a></li>
         </ul>
       </section>
-
       <section class="docs-nav-section">
         <h2 class="docs-nav-section-title">Workflows</h2>
         <ul class="docs-nav-list">
-          <li><a class="docs-nav-link" href="add-an-item-to-a-project.html" data-doc-link data-title="add an item to a project">Add An Item To A Project</a></li>
-          <li><a class="docs-nav-link" href="capture-item-quick-drafts.html" data-doc-link data-title="capture item quick drafts">Capture Item Quick Drafts</a></li>
-          <li><a class="docs-nav-link" href="create-a-project.html" data-doc-link data-title="create a project">Create A Project</a></li>
-          <li><a class="docs-nav-link" href="create-a-transaction.html" data-doc-link data-title="create a transaction">Create A Transaction</a></li>
-          <li><a class="docs-nav-link" href="create-an-invoice.html" data-doc-link data-title="create an invoice">Create An Invoice</a></li>
-          <li><a class="docs-nav-link" href="export-transactions.html" data-doc-link data-title="export transactions">Export Transactions</a></li>
-          <li><a class="docs-nav-link" href="find-items-transactions-and-spaces.html" data-doc-link data-title="find items, transactions, and spaces">Find Items, Transactions, And Spaces</a></li>
-          <li><a class="docs-nav-link" href="generate-client-reports.html" data-doc-link data-title="generate client reports">Generate Client Reports</a></li>
-          <li><a class="docs-nav-link active" href="move-inventory-items-to-a-project.html" data-doc-link data-title="move inventory items to a project">Move Inventory Items To A Project</a></li>
-          <li><a class="docs-nav-link" href="return-items.html" data-doc-link data-title="return items">Return Items</a></li>
-          <li><a class="docs-nav-link" href="review-pending-transactions.html" data-doc-link data-title="review pending transactions">Review Pending Transactions</a></li>
+          <li><a class="docs-nav-link" href="../workflows/create-a-project.html" data-doc-link data-href="workflows/create-a-project.html">Create a Project</a></li>
+          <li><a class="docs-nav-link" href="../workflows/add-an-item-to-a-project.html" data-doc-link data-href="workflows/add-an-item-to-a-project.html">Add an Item to a Project</a></li>
+          <li><a class="docs-nav-link" href="../workflows/capture-item-quick-drafts.html" data-doc-link data-href="workflows/capture-item-quick-drafts.html">Capture Item Quick Drafts</a></li>
+          <li><a class="docs-nav-link" href="../workflows/create-a-transaction.html" data-doc-link data-href="workflows/create-a-transaction.html">Create a Transaction</a></li>
+          <li><a class="docs-nav-link active" href="../workflows/move-inventory-items-to-a-project.html" data-doc-link data-href="workflows/move-inventory-items-to-a-project.html">Move Inventory Items to a Project</a></li>
+          <li><a class="docs-nav-link" href="../workflows/return-items.html" data-doc-link data-href="workflows/return-items.html">Return Items</a></li>
+          <li><a class="docs-nav-link" href="../workflows/review-pending-transactions.html" data-doc-link data-href="workflows/review-pending-transactions.html">Review Pending Transactions</a></li>
+          <li><a class="docs-nav-link" href="../workflows/create-an-invoice.html" data-doc-link data-href="workflows/create-an-invoice.html">Create an Invoice</a></li>
+          <li><a class="docs-nav-link" href="../workflows/generate-client-reports.html" data-doc-link data-href="workflows/generate-client-reports.html">Generate Client Reports</a></li>
+          <li><a class="docs-nav-link" href="../workflows/export-transactions.html" data-doc-link data-href="workflows/export-transactions.html">Export Transactions</a></li>
+          <li><a class="docs-nav-link" href="../workflows/find-items-transactions-and-spaces.html" data-doc-link data-href="workflows/find-items-transactions-and-spaces.html">Find Items, Transactions, and Spaces</a></li>
         </ul>
       </section>
-
       <section class="docs-nav-section">
         <h2 class="docs-nav-section-title">Admin</h2>
         <ul class="docs-nav-list">
-          <li><a class="docs-nav-link" href="../admin/archive-or-delete-projects.html" data-doc-link data-title="archive or delete projects">Archive Or Delete Projects</a></li>
-          <li><a class="docs-nav-link" href="../admin/manage-budget-categories.html" data-doc-link data-title="manage budget categories">Manage Budget Categories</a></li>
-          <li><a class="docs-nav-link" href="../admin/manage-financial-access.html" data-doc-link data-title="manage financial access">Manage Financial Access</a></li>
-          <li><a class="docs-nav-link" href="../admin/manage-space-templates.html" data-doc-link data-title="manage space templates">Manage Space Templates</a></li>
-          <li><a class="docs-nav-link" href="../admin/manage-users.html" data-doc-link data-title="manage users">Manage Users</a></li>
-          <li><a class="docs-nav-link" href="../admin/manage-vendors.html" data-doc-link data-title="manage vendors">Manage Vendors</a></li>
+          <li><a class="docs-nav-link" href="../admin/manage-users.html" data-doc-link data-href="admin/manage-users.html">Manage Users</a></li>
+          <li><a class="docs-nav-link" href="../admin/manage-financial-access.html" data-doc-link data-href="admin/manage-financial-access.html">Manage Financial Access</a></li>
+          <li><a class="docs-nav-link" href="../admin/manage-budget-categories.html" data-doc-link data-href="admin/manage-budget-categories.html">Manage Budget Categories</a></li>
+          <li><a class="docs-nav-link" href="../admin/manage-space-templates.html" data-doc-link data-href="admin/manage-space-templates.html">Manage Space Templates</a></li>
+          <li><a class="docs-nav-link" href="../admin/manage-vendors.html" data-doc-link data-href="admin/manage-vendors.html">Manage Vendors</a></li>
+          <li><a class="docs-nav-link" href="../admin/archive-or-delete-projects.html" data-doc-link data-href="admin/archive-or-delete-projects.html">Archive or Delete Projects</a></li>
         </ul>
       </section>
-
       <section class="docs-nav-section">
         <h2 class="docs-nav-section-title">Reference</h2>
         <ul class="docs-nav-list">
-          <li><a class="docs-nav-link" href="../reference/budget-category-types.html" data-doc-link data-title="budget category types">Budget Category Types</a></li>
-          <li><a class="docs-nav-link" href="../reference/common-issues.html" data-doc-link data-title="common issues">Common Issues</a></li>
-          <li><a class="docs-nav-link" href="../reference/glossary.html" data-doc-link data-title="glossary">Glossary</a></li>
-          <li><a class="docs-nav-link" href="../reference/invoice-statuses.html" data-doc-link data-title="invoice statuses">Invoice Statuses</a></li>
-          <li><a class="docs-nav-link" href="../reference/item-statuses.html" data-doc-link data-title="item statuses">Item Statuses</a></li>
-          <li><a class="docs-nav-link" href="../reference/transaction-types.html" data-doc-link data-title="transaction types">Transaction Types</a></li>
+          <li><a class="docs-nav-link" href="../reference/glossary.html" data-doc-link data-href="reference/glossary.html">Glossary</a></li>
+          <li><a class="docs-nav-link" href="../reference/item-statuses.html" data-doc-link data-href="reference/item-statuses.html">Item Statuses</a></li>
+          <li><a class="docs-nav-link" href="../reference/transaction-types.html" data-doc-link data-href="reference/transaction-types.html">Transaction Types</a></li>
+          <li><a class="docs-nav-link" href="../reference/budget-category-types.html" data-doc-link data-href="reference/budget-category-types.html">Budget Category Types</a></li>
+          <li><a class="docs-nav-link" href="../reference/invoice-statuses.html" data-doc-link data-href="reference/invoice-statuses.html">Invoice Statuses</a></li>
+          <li><a class="docs-nav-link" href="../reference/common-issues.html" data-doc-link data-href="reference/common-issues.html">Common Issues</a></li>
         </ul>
       </section>
       <p class="docs-empty">No matching docs found.</p>
     </aside>
     <main class="docs-content">
-      <section class="docs-hero">
+      <header class="docs-page-header">
         <p class="docs-kicker">Workflows</p>
-        <h1 class="docs-title">Move Inventory Items To A Project</h1>
-        
-      </section>
+        <h1>Move Inventory Items to a Project</h1>
+      </header>
       <article class="docs-article">
 <p>Use this when business inventory items should become part of a client project.</p>
 <h2>Before You Start</h2>
@@ -111,27 +108,13 @@
 <h2>Related</h2>
 <ul><li><a href="../core-concepts/inventory.html">Inventory</a></li><li><a href="return-items.html">Return Items</a></li><li><a href="../reference/budget-category-types.html">Budget Category Types</a></li></ul>
       </article>
+      <nav class="docs-pagenav" aria-label="Page navigation">
+        <a class="docs-pagenav-link prev" href="../workflows/create-a-transaction.html"><span class="docs-pagenav-label">Previous</span><span class="docs-pagenav-title">Create a Transaction</span></a>
+        <a class="docs-pagenav-link next" href="../workflows/return-items.html"><span class="docs-pagenav-label">Next</span><span class="docs-pagenav-title">Return Items</span></a>
+      </nav>
     </main>
   </div>
-  <script>
-    const searchInput = document.querySelector('.docs-search');
-    const sidebar = document.querySelector('.docs-sidebar');
-    const empty = document.querySelector('.docs-empty');
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.trim().toLowerCase();
-      let visible = 0;
-      sidebar.classList.toggle('searching', query.length > 0);
-      document.querySelectorAll('[data-doc-link]').forEach((link) => {
-        const match = !query || link.dataset.title.includes(query);
-        link.parentElement.style.display = match ? '' : 'none';
-        if (match) visible += 1;
-      });
-      document.querySelectorAll('.docs-nav-section').forEach((section) => {
-        const hasVisibleLinks = Array.from(section.querySelectorAll('li')).some((item) => item.style.display !== 'none');
-        section.style.display = hasVisibleLinks ? '' : 'none';
-      });
-      empty.style.display = visible ? 'none' : 'block';
-    });
-  </script>
+  <script src="../search-index.js"></script>
+  <script src="../docs.js"></script>
 </body>
 </html>
